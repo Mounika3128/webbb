@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const bcrypt = require('bcrypt');
+require('dotenv').config(); 
 
 // Initialize app
 const app = express();
@@ -14,7 +15,7 @@ app.use(express.static('public')); // for static files (e.g., CSS, images, JS)
 app.use(express.static(path.join(__dirname, 'images'))); // serve images from the 'images' directory
 
 // MongoDB URI
-const mongoURI = 'mongodb://localhost:27017/doctorAppointmentSystem';
+const mongoURI = process.env.MONGO_URI;
 
 // Create MongoDB connection
 mongoose.connect(mongoURI);
